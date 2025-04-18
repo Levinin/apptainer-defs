@@ -23,9 +23,9 @@ $ sudo apt install -y ./apptainer_1.4.0_amd64.deb
 ### ROS2 humble
 
 ```
-apptainer build --sandbox ros2_humble/ ros2_humble.definition
-apptainer shell --no-home --bind /your/python/script/dir:/python_scripts --writable ros2_humble/
-cd ros2_humble/colcon_ws
+apptainer build --sandbox ros2_humble/ ros2_humble.def
+apptainer shell --no-home --bind /your/colcon_ws/dir:/colcon_ws --writable ros2_humble/
+cd colcon_ws
 tmux
 source /opt/ros/humble/setup.bash
 ```
@@ -40,9 +40,18 @@ Alternatively, use Jupyter by running the following in the container:
 jupyter lab --ip=127.0.0.1 --port=8888 --no-browser
 ```
 
-And then point your main browser to `localhost:8888`.
+And then copy the url from the message, remembering to include the key, and paste into your local browser.
 
 ### Simple ML
 
 Very similar to ROS2. This version is made for use with Jupyter Lab as above.
 Instead of a `/colcon_ws` directory there is a `/python_scripts` directory for development.
+
+```
+apptainer build --sandbox simple_ml/ ros2_humble.def
+apptainer shell --no-home --bind /your/python/script/dir:/python_scripts --writable simple_ml/
+tmux
+jupyter lab --ip=127.0.0.1 --port=8888 --no-browser
+```
+
+And then copy the url from the message, remembering to include the key, and paste into your local browser.
