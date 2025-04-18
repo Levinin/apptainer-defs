@@ -23,11 +23,14 @@ $ sudo apt install -y ./apptainer_1.4.0_amd64.deb
 ### ROS2 humble
 
 ```
-apptainer build --sandbox ros2_humble/ ros2_humble.def
+apptainer build --sandbox ros2_humble/ ros_humble.def
 apptainer shell --no-home --bind /your/colcon_ws/dir:/colcon_ws --writable ros2_humble/
-cd colcon_ws
+cd /colcon_ws
 tmux
 source /opt/ros/humble/setup.bash
+colcon build
+source install/local_setup.bash
+ros2 run ...
 ```
 
 Note the `--no-home` above. This is to avoid some funky jupyter and tmux behaviour where new terminals read your local .bashrc meaning all sorts of non-container related stuff is enabled.
@@ -41,6 +44,12 @@ jupyter lab --ip=127.0.0.1 --port=8888 --no-browser
 ```
 
 And then copy the url from the message, remembering to include the key, and paste into your local browser.
+
+The ROS# bridge for ROS2 and Unity should be installed which can be started with:
+```
+source /opt/ros/humble/setup.bash
+ros2 launch rosbridge_server rosbridge_websocket_launch.xml
+```
 
 ### Simple ML
 
