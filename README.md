@@ -48,7 +48,7 @@ Very similar to ROS2. This version is made for use with Jupyter Lab as above.
 Instead of a `/colcon_ws` directory there is a `/python_scripts` directory for development.
 
 ```
-apptainer build --sandbox simple_ml/ ros2_humble.def
+apptainer build --sandbox simple_ml/ simple_ml.def
 apptainer shell --no-home --bind /your/python/script/dir:/python_scripts --writable simple_ml/
 tmux
 jupyter lab --ip=127.0.0.1 --port=8888 --no-browser
