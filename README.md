@@ -24,7 +24,7 @@ $ sudo apt install -y ./apptainer_1.4.0_amd64.deb
 
 ```
 apptainer build --sandbox ros2_humble/ ros2_humble.definition
-apptainer shell --no-home --bind /your/python/script/dir:/py_scripts --writable ros2_humble/
+apptainer shell --no-home --bind /your/python/script/dir:/python_scripts --writable ros2_humble/
 cd ros2_humble/colcon_ws
 tmux
 source /opt/ros/humble/setup.bash

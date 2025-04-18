@@ -61,7 +61,6 @@ From: ubuntu:22.04
     apt clean && rm -rf /var/lib/apt/lists/*
 
 %files
-    ./message /colcon_ws/src/message
 
 %environment
     export PATH=/opt/venv/bin:$PATH
