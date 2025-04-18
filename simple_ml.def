@@ -42,36 +42,15 @@ From: ubuntu:22.04
     ln -fs /usr/share/zoneinfo/Europe/London /etc/localtime
     dpkg-reconfigure -f noninteractive tzdata
 
-    # ROS2 Setup.
-    locale-gen en_US en_US.UTF-8
-    update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
-    export LANG=en_US.UTF-8
-
-    add-apt-repository universe
-    curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
-    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | tee /etc/apt/sources.list.d/ros2.list > /dev/null
-
-    apt update
-    apt upgrade -y
-
-    apt install -y ros-humble-desktop
-    apt install -y ros-humble-navigation2 ros-humble-nav2-bringup
-
-    apt install -y python3-rosdep
-    rosdep init || true
-    rosdep update
-
-    echo "source /opt/ros/humble/setup.bash" >> /root/.bashrc
 
     # Other things
     mkdir -p /opt/venv
     python3.10 -m venv /opt/venv
     . /opt/venv/bin/activate
     pip install --upgrade pip
-    pip install matplotlib pandas numpy scikit-learn jupyterlab colcon-common-extensions
+    pip install matplotlib pandas numpy scikit-learn jupyterlab seaborn[stats] xgboost
     pip install networkx owlready2 rdflib
     mkdir -p /python_scripts
-    mkdir -p /colcon_ws/src
 
     echo "source /opt/venv/bin/activate" >> /root/.bashrc
 
@@ -86,7 +65,7 @@ From: ubuntu:22.04
     export PYTHONPATH=/python_scripts:$PYTHONPATH
 
 %runscript
-    echo "Python venv is active. Type 'python' to get started or run scripts from /python_scripts"
+    echo "Python venv is active. Type 'python' to get started."
     echo "Jupyter server is running on localhost:8888"
     jupyter lab --ip=127.0.0.1 --port=8888 --no-browser &
     exec "$@"
