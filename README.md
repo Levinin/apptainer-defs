@@ -24,11 +24,13 @@ $ sudo apt install -y ./apptainer_1.4.0_amd64.deb
 
 ```
 apptainer build --sandbox ros2_humble/ ros2_humble.definition
-apptainer shell --writable ros2_humble
+apptainer shell --no-home --bind /your/python/script/dir:/py_scripts --writable ros2_humble/
 cd ros2_humble/colcon_ws
 tmux
 source /opt/ros/humble/setup.bash
 ```
+
+Note the `--no-home` above. This is to avoid some funky jupyter and tmux behaviour where new terminals read your local .bashrc meaning all sorts of non-container related stuff is enabled.
 
 Now create a new package, copy files from outside the directory as required.
 It is possible to use your favourite editor directly, treating the container as a directory.
@@ -44,5 +46,3 @@ And then point your main browser to `localhost:8888`.
 
 Very similar to ROS2. This version is made for use with Jupyter Lab as above.
 Instead of a `/colcon_ws` directory there is a `/python_scripts` directory for development.
-
-Note that Apptainer mounts your home directory so, if scripts are in a subdirectory, it is possible to edit them directly from the container without having to import them first.

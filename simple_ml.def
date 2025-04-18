@@ -52,6 +52,9 @@ From: ubuntu:22.04
     pip install networkx owlready2 rdflib
     mkdir -p /python_scripts
 
+    pip install ipykernel
+    python -m ipykernel install --name=venv --display-name "Python (apptainer)" --prefix=/opt/venv
+
     echo "source /opt/venv/bin/activate" >> /root/.bashrc
 
     # Cleanup

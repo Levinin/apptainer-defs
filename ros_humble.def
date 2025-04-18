@@ -70,6 +70,10 @@ From: ubuntu:22.04
     pip install --upgrade pip
     pip install matplotlib pandas numpy scikit-learn jupyterlab colcon-common-extensions
     pip install networkx owlready2 rdflib
+
+    pip install ipykernel
+    python -m ipykernel install --name=venv --display-name "Python (apptainer)" --prefix=/opt/venv
+
     mkdir -p /python_scripts
     mkdir -p /colcon_ws/src
 
