@@ -10,7 +10,7 @@ A small repo of apptainer definition files I have put together for my own use an
 
 ## Installing Apptainer Ubuntu - quick guide
 
-Full instructions are on the Apptainer website().
+Full instructions are on the [Apptainer website](https://apptainer.org/docs/admin/main/installation.html).
 To quickly install on managed Ubuntu devices, i.e. without adding a new repo:
 
 ```
