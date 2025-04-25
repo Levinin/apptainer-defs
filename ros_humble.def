@@ -60,7 +60,16 @@ From: ubuntu:22.04
         ros-humble-rosbridge-server \
         python3-tornado \
         python3-twisted \
-        python3-autobahn
+        python3-autobahn \
+        ros-humble-octomap \
+        ros-humble-octomap-ros \
+        ros-humble-octomap-msgs \
+        ros-humble-octomap-mapping \
+        ros-humble-octomap-server \
+        ros-humble-octomap-rviz-plugins \
+        ros-humble-depth-image-proc
+
+
 
     apt install -y python3-rosdep
     rosdep init || true
